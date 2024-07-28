@@ -3,6 +3,7 @@
 class Workout {
   date = new Date();
   id = (Date.now() + '').slice(-10);
+  clicks = 0;
   constructor(coords, distance, duration) {
     this.coords = coords;
     this.distance = distance;
@@ -15,6 +16,9 @@ class Workout {
     this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${
       months[this.date.getMonth()]
     } ${this.date.getDate()}`;
+  }
+  click() {
+    this.clicks++;
   }
 }
 class Running extends Workout {
@@ -85,7 +89,6 @@ class App {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.#map);
 
-    // Handling clicks on map
     this.#map.on('click', this._showForm.bind(this));
   }
   _showForm(mapE) {
@@ -219,6 +222,7 @@ class App {
         duration: 1,
       },
     });
+    workout.click();
   }
 }
 const app = new App();
