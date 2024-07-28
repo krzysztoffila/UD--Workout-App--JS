@@ -43,11 +43,6 @@ class Cycling extends Workout {
     return this.speed;
   }
 }
-// const run1 = new Running([39, -12], 5.2, 24, 178);
-// const cycling1 = new Cycling([39, -12], 27, 95, 523);
-// console.log(run1);
-// console.log(cycling1);
-
 ////////////////////////////
 // APPLICATION ARCHITECTURE
 const form = document.querySelector('.form');
@@ -146,7 +141,8 @@ class App {
     this._hideForm();
   }
   _renderWorkoutMarker(workout) {
-    L.marker(workout.coords)
+    const { coords, type, description } = workout;
+    L.marker(coords)
       .addTo(this.#map)
       .bindPopup(
         L.popup({
@@ -154,10 +150,10 @@ class App {
           minWidth: 100,
           autoClose: false,
           closeOnClick: false,
-          className: `${workout.type}-popup`,
+          className: `${type}-popup`,
         })
       )
-      .setPopupContent('Workout')
+      .setPopupContent(`${type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${description}`)
       .openPopup();
   }
   _renderWorkout(workout) {
