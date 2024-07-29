@@ -242,3 +242,13 @@ class App {
   }
 }
 const app = new App();
+// Challenges:
+// Edit a workout
+// Delete a workout
+// Delete all workouts
+// sort by distance
+// Rebuild Running and Cycling objects coming from local storage
+// More realistic error and confirmation messages
+// draw lines and shapes instead of just points [HARD]
+// Geocode location from coordinates [HARD] - async
+// Display weather
